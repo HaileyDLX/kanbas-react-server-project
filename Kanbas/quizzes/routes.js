@@ -25,6 +25,11 @@ function QuizRoutes(app) {
         console.log("quizzes: " + quizzes)
         res.send(quizzes);
     });
+    app.get("/api/quizzes/:qid", async (req, res) => {
+        const { qid } = req.params;
+        const quiz = await dao.findQuizById(qid);
+        res.send(quiz);
+    });
     app.put("/api/quizzes/:qid", async(req, res) => {
         const { qid } = req.params;
         const quiz = req.body;
