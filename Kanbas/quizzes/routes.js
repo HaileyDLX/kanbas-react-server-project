@@ -32,5 +32,10 @@ function QuizRoutes(app) {
         res.sendStatus(204);
     });
 
+    app.get("/api/quizzes/:qid", async (req, res) => {
+        const { qid } = req.params;
+        const quiz = await dao.findQuizById(qid);
+        res.send(quiz);
+    });
 }
 export default QuizRoutes;
