@@ -1,20 +1,23 @@
 import mongoose, { Mongoose } from "mongoose";
 const questionSchema = new mongoose.Schema({
-    title: {
+     title: {
         type: String,
         required: true
-      },
+       },
+     points: Number,
+
       type: {
         type: String,
         required: true,
-        enum: ['blank', 'truefalse', 'MultipleChoice']
+        enum: ['Fill in multiple blanks', 'True/false', 'Multiple choice'],
+        default: 'Multiple choice'
       },
       options: {
         type: [String],
         default: []
       },
       answers: {
-        type: [mongoose.SchemaTypes.Mixed], // 使用Mixed类型以允许数组内有不同类型的数据
+        type: [mongoose.SchemaTypes.Mixed],
         required: true
       },
       question: {

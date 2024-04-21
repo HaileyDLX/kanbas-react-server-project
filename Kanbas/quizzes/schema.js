@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const quizSchema = new mongoose.Schema({
+const quizSchema  = new mongoose.Schema({
                                             id: { type: String},
                                            title: { type: String },
                                            description: { type: String},
