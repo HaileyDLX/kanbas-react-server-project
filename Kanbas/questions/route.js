@@ -10,16 +10,16 @@ function QuestionRoutes(app){
       const questions = await dao .findAllQuestions();
       res.send(questions);
     });
+
     app.get("/api/questions/:questionId",async(req,res)=>{
         const questionId = req.params.questionId;
         const question = await dao. findQuestionById(questionId);
         res.send(question);
     })
     app.post("/api/quizzes/:qid/questions",async(req,res)=>{
-        const qid = req.params.qid;
-        const questionData = req.body;
-        const question = await dao.createQuestion(questionData,qid);
-        res.send(question);
+        const qid = req.params;
+        const newQuestion = await dao.createQuestion(qid,req.body,qid);
+        res.send(newQuestion);
     });
     app.put("/api/questions/:questionId",async(req,res)=>{
         const questionId = req.params.questionId;
