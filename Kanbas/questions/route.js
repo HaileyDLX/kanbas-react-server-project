@@ -19,6 +19,7 @@ function QuestionRoutes(app){
     app.post("/api/quizzes/:qid/questions",async(req,res)=>{
         const qid = req.params;
         const newQuestion = await dao.createQuestion(qid,req.body,qid);
+
         res.send(newQuestion);
     });
     app.put("/api/questions/:questionId",async(req,res)=>{
