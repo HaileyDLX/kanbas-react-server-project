@@ -4,8 +4,8 @@ export const findAllQuestions = () => questionModel.find();
 
 export const findQuestionsByQid = (qid) => questionModel.find({ quiz: qid });
 export const findQuestionById = (id) => questionModel.findOne({ _id: id });
-export const createQuestion = (questionId,questionData, qid) => {
-    const questionToCreate = { id: questionId, ...questionData, quiz: qid };
+export const createQuestion = (qid, questionData) => {
+    const questionToCreate = {  ...questionData, quiz: qid };
     return questionModel.create(questionToCreate);
 };
 export const updateQuestion = (id, question) =>

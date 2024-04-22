@@ -13,6 +13,7 @@ function QuizRoutes(app) {
         const { cid } = req.params;
         const newQuiz = await dao.createQuiz(cid,req.body,cid);
         res.send(newQuiz);
+
     });
     app.get("/api/courses/:cid/quizzes", async (req, res) => {
         const cid  = req.params.cid;
@@ -24,6 +25,13 @@ function QuizRoutes(app) {
         const quizzes  = await dao.findQuizzesByCid(cid);
         console.log("quizzes: " + quizzes)
         res.send(quizzes);
+
+
+    });
+    app.get("/api/quizzes/:qid", async (req, res) => {
+        const { qid } = req.params;
+        const quiz = await dao.findQuizById(qid);
+        res.send(quiz);
     });
     app.put("/api/quizzes/:qid", async(req, res) => {
         const { qid } = req.params;

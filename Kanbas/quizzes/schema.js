@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const quizSchema = new mongoose.Schema({
+const quizSchema  = new mongoose.Schema({
                                             id: { type: String},
                                            title: { type: String },
                                            description: { type: String},
@@ -17,6 +17,7 @@ const quizSchema = new mongoose.Schema({
                                            },
                                            shuffleAnswers: { type: Boolean, default: true },
                                            timeLimit: { type: Number, default: 20 },
+                                            hasTimeLimit: { type: Boolean, default: true },
                                            multipleAttempts: { type: Boolean, default: false },
                                            showCorrectAnswers: { type: Boolean, default: false },
                                            accessCode: { type: String },
