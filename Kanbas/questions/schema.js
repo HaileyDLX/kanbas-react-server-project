@@ -1,29 +1,33 @@
+
 import mongoose, { Mongoose } from "mongoose";
 const questionSchema = new mongoose.Schema({
-     title: {
-        type: String,
-       },
-     points: Number,
+                                               title: {
+                                                   type: String,
 
-      type: {
-        type: String,
-        enum: ['Fill in multiple blanks', 'True/false', 'Multiple choice'],
-        default: 'Multiple choice'
-      },
-      options: {
-        type: [String],
-        default: []
-      },
-      answers: {
-        type: [mongoose.SchemaTypes.Mixed],
-      },
-      question: {
-        type: String,
+                                               },
+                                               points: Number,
 
-      },
-      quiz: {
-        type: String 
-        
-      }
-    },{collection:"questions"})
-    export default questionSchema;
+                                               type: {
+                                                   type: String,
+
+                                                   enum: ['Fill in Blanks', 'True/False', 'MultipleChoice'],
+                                                   default: 'MultipleChoice'
+                                               },
+                                               options: {
+                                                   type: [String],
+                                                   default: []
+                                               },
+                                               answers: {
+                                                   type: [mongoose.SchemaTypes.Mixed],
+
+                                               },
+                                               question: {
+                                                   type: String,
+
+                                               },
+                                               quiz: {
+                                                   type: String
+
+                                               }
+                                           },{collection:"questions"})
+export default questionSchema;

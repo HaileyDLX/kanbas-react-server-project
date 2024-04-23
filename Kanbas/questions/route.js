@@ -1,3 +1,4 @@
+
 import * as dao from "./dao.js";
 import quizModel from "../quizzes/model.js";
 function QuestionRoutes(app){
@@ -7,8 +8,8 @@ function QuestionRoutes(app){
         res.send(questions);
     });
     app.get("/api/questions",async (req,res)=>{
-      const questions = await dao .findAllQuestions();
-      res.send(questions);
+        const questions = await dao .findAllQuestions();
+        res.send(questions);
     });
 
     app.get("/api/questions/:questionId",async(req,res)=>{
@@ -17,8 +18,9 @@ function QuestionRoutes(app){
         res.send(question);
     })
     app.post("/api/quizzes/:qid/questions",async(req,res)=>{
-        const qid = req.params;
-        const newQuestion = await dao.createQuestion(qid,req.body,qid);
+        const qid = req.params.qid;
+        const questionData = req.body;
+        const newQuestion = await dao.createQuestion(qid,questionData);
 
         res.send(newQuestion);
     });
@@ -33,5 +35,6 @@ function QuestionRoutes(app){
         await dao.deleteQuestion(questionId);
         res.send(200);
     });
+
 }
 export default QuestionRoutes; 
